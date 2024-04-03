@@ -1,0 +1,28 @@
+﻿<Window x:Class="prakt4ds.tri"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prakt4ds"
+        mc:Ignorable="d"
+        Title="tri" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Показать таблицу" Click="pokaz"/>
+        <Button Grid.Column="1" Content="Поиск" Click="poiskk"/>
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" x:Name="dg1" IsReadOnly="True" SelectionChanged="dg1_SelectionChanged"/>
+        <TextBox x:Name="SearchTxt"/>
+        <ComboBox Grid.Row="1" x:Name="vybor" SelectionChanged="vybor_SelectionChanged" Grid.ColumnSpan="2"/>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Click="vyhod" Content="Выйти в меню"/>
+    </Grid>
+</Window>
