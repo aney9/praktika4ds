@@ -2855,9 +2855,9 @@ SELECT ID_orders, DataPokupki, Price, clients_ID, mesto_ID FROM Orders WHERE (ID
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "select*\r\nfrom [Orders]\r\nwhere [clients_ID] = @clients_ID";
+            this._commandCollection[1].CommandText = "select *\r\nfrom [Orders]\r\nwhere [DataPokupki] = @DataPokupki\r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clients_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "clients_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DataPokupki", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "DataPokupki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "select*\r\nfrom [Orders]\r\nwhere convert(varchar, Price) like \'%\'+@toSearch+\'%\'";
@@ -2893,9 +2893,14 @@ SELECT ID_orders, DataPokupki, Price, clients_ID, mesto_ID FROM Orders WHERE (ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual praktikaDataSet.OrdersDataTable filtr(int clients_ID) {
+        public virtual praktikaDataSet.OrdersDataTable filtr(string DataPokupki) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(clients_ID));
+            if ((DataPokupki == null)) {
+                throw new global::System.ArgumentNullException("DataPokupki");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DataPokupki));
+            }
             praktikaDataSet.OrdersDataTable dataTable = new praktikaDataSet.OrdersDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

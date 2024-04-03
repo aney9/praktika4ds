@@ -22,19 +22,18 @@ namespace prakt4ds
     public partial class tri : Window
     {
         OrdersTableAdapter orders = new OrdersTableAdapter();
-        ClientsTableAdapter clients = new ClientsTableAdapter();
         public tri()
         {
             InitializeComponent();
-            vybor.ItemsSource = clients.GetData();
-            vybor.DisplayMemberPath = "ClientSurname";
+            vybor.ItemsSource = orders.GetData();
+            vybor.DisplayMemberPath = "DataPokupki";
         }
 
         private void vybor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (vybor.SelectedItem != null)
             {
-                var id = (int)(vybor.SelectedItem as DataRowView).Row[0];
+                var id = (vybor.SelectedItem as DataRowView).Row[1].ToString();
                 dg1.ItemsSource = orders.filtr(id);
             }
         }
